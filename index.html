@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from web1-demo.herokuapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Apr 2022 03:55:52 GMT -->
+<head>
+    <title>9912022 - Ice-cream</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Changa+One" type="text/css">
+    <link rel="stylesheet" href="css/9912022.css">
+    <link rel="stylesheet" href="css/banner.css">
+
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="../connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=1036770573123851&autoLogAppEvents=1"></script>
+    <!--header-->
+    <header class="container">
+        <nav class="navbar navbar-expand-sm navbar-light px-0">
+            <a class="navbar-brand" href="index-2.html" id="logo">
+                <img src="images/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse justify-content-end" id="menu">
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index-2.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacts.html">Contacts</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" id="frm-search" onsubmit="return search(this.searchword.value);">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control" type="text" placeholder="Search" id="searchword">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit" id="btn-search"></button>
+                        </div>
+                    </div>
+                </form>
+                <div id="social">
+                    <a href="#" class="btn twitter">
+
+                    </a>
+                    <a href="#" class="btn facebook">
+
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--/header-->
+    <!--small banner-->
+    <div class="container-fluid" id="small-banner" style="visibility:hidden">
+
+    </div>
+    <!--/small banner-->
+    <div id="content" class="pb-3">
+        <!--banner-->
+        <div class="container-fluid" id="banner">
+            <div class="container text-center">
+                <h4 class="text-white">Tasty cakes and ice-cream
+                    <br/>for everyone</h4>
+                <div>
+                    <a id="btn-menu" href="menu.html">see our menu</a>
+                </div>
+                <ul id="dots">
+                    <li class="current">
+                        <span>0</span>
+                    </li>
+                    <li>
+                        <span>1</span>
+                    </li>
+                    <li>
+                        <span>2</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/banner-->
+
+        <!--main-->
+        <div class="container" id="products">
+
+        </div>
+        <!--/main-->
+
+        <!--about us-->
+        <div class="container-fluid about py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h3 class="text-white">About Us</h3>
+                        <div>
+                            <img src="images/icon-about.png" alt="">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit cupiditate earum unde, itaque vel, iste quasi magnam saepe ex animi voluptatibus commodi amet dolor natus a doloremque nostrum culpa perspiciatis?</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis repellat rerum reiciendis corporis esse quae eveniet animi obcaecati beatae ex.
+                                <a class="readmore" href="about.html">Read more</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <form action="https://web1-demo.herokuapp.com/post" id="frm-signup" onsubmit="window.alert('Thank you for your submission!'); return false;">
+                            <h3>Newsletter
+                                <br/>Sign Up</h3>
+                            <div>Please, write an e-mail:</div>
+                            <div>
+                                <input type="email" name="email" id="email" required>
+                            </div>
+                            <button type="submit">SIGN UP</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/about us-->
+
+        <!--news-->
+        <div class="container py-5" id="news">
+
+        </div>
+        <!--/news-->
+    </div>
+    <!--footer-->
+    <footer class="container-fluid">
+        <nav>
+            <ul>
+                <li class="active">
+                    <a href="index-2.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="menu.html">Menu</a>
+                </li>
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="contacts.html">Contacts</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            Ice-cream &copy; 2019 |
+            <a href="#" class="text-uppercase">Privacy policy</a>
+        </div>
+    </footer>
+    <!--/footer-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/handlebars.runtime-v4.1.0.js"></script>
+    <script src="js/templates.js"></script>
+
+    <script src="js/9912022.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadDetails("products");
+            loadDetails("news");
+        });
+
+        function loadNew(id) {
+            loadDetails(`news/${id}`, 'content', 'index-details');
+        }
+
+        function loadProduct(id) {
+            loadDetails(`products/${id}`, 'content', 'index-details');
+        }
+    </script>
+</body>
+
+
+<!-- Mirrored from web1-demo.herokuapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Apr 2022 03:55:58 GMT -->
+</html>

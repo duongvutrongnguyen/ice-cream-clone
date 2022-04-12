@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from web1-demo.herokuapp.com/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Apr 2022 03:56:01 GMT -->
+<head>
+    <title>9912022 - Ice-cream - Blog</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Changa+One" type="text/css">
+    <link rel="stylesheet" href="css/9912022.css">
+</head>
+
+<body>
+    <!--header-->
+    <header class="container">
+        <nav class="navbar navbar-expand-sm navbar-light px-0">
+            <a class="navbar-brand" href="index-2.html" id="logo">
+                <img src="images/logo.png" alt="">
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="menu">
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index-2.html">Home
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacts.html">Contacts</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" id="frm-search" onsubmit="return search(this.searchword.value);">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control" type="text" placeholder="Search" id="searchword">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit" id="btn-search"></button>
+                        </div>
+                    </div>
+                </form>
+                <div id="social">
+                    <a href="#" class="btn twitter">
+
+                    </a>
+                    <a href="#" class="btn facebook">
+
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--/header-->
+    <!--small banner-->
+    <div class="container-fluid" id="small-banner">
+
+    </div>
+    <!--/small banner-->
+    <!--blog-->
+    <div class="container py-5" id="content">
+        <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-dark">Blog</h3>
+                <div id="blogs">
+
+                </div>
+                <div class="clearfix py-3" id="blogs-pagination">
+
+                </div>
+            </div>
+            <div class="col-md-3 py-3">
+                <div>
+                    <h3 class="text-dark pb-3">Categories</h3>
+                    <ul class="list" id="blogs-categories">
+
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-dark pb-3">Archives</h3>
+                    <ul class="list" id="blogs-archives">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/blog-->
+    <!--footer-->
+    <footer class="container-fluid">
+        <nav>
+            <ul>
+                <li>
+                    <a href="index-2.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="menu.html">Menu</a>
+                </li>
+                <li class="active">
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="contacts.html">Contacts</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            Ice-cream &copy; 2019 |
+            <a href="blog.html" class="text-uppercase">Privacy policy</a>
+        </div>
+    </footer>
+    <!--/footer-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/handlebars.runtime-v4.1.0.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/handlebars-pagination-helper.js"></script>
+    <script src="js/9912022.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadBlogs();
+            loadDetails('blogs-categories');
+            loadDetails('blogs-archives');
+        });
+
+        function loadBlogById(id) {
+            $('#blogs-pagination').html('');
+            loadDetails(`blogs/${id}`, 'blogs', 'blogs-details');
+        }
+
+        function loadBlogsByArchive(month, year) {
+            loadBlogs(`blogs/archives/${month}-${year}`);
+        }
+
+        function loadBlogsByCategory(id) {
+            loadBlogs(`blogs/categories/${id}`);
+        }
+
+        function loadBlogs(api = 'blogs', currentPage = 1) {
+            $.ajax({
+                url: `${API}/${api}?page=${currentPage}`,
+                cache: false,
+                success: function(data) {
+                    let jsonData = {
+                        data: data.data
+                    };
+                    let target = $('#blogs');
+                    let template = Handlebars.templates['blogs'];
+                    $(target).html(template(jsonData));
+
+                    jsonData = {
+                        currentPage: currentPage,
+                        pageCount: data.pageCount,
+                        size: 5,
+                        api: api
+                    };
+                    target = $('#blogs-pagination');
+                    template = Handlebars.templates['blogs-pagination'];
+                    $(target).html(template(jsonData));
+                }
+            });
+        }
+
+        function addComment() {
+
+            $.ajax({
+                url: `${AUTH_API}/authenticate`,
+                type: 'POST',
+                data: {
+                    username: 'test',
+                    password: '1c3cr3@m'
+                },
+                dataType: 'json',
+                success: (data) => {
+                    localStorage.setItem('token', data.token);
+                }
+            });
+
+            var formData = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                comment: $('#comment').val(),
+                blogId: $('#blogId').val(),
+                agree: $('#agree').prop('checked')
+            };
+
+            $.ajax({
+                url: `${AUTH_API}/comment`,
+                type: 'POST',
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.getItem('token')
+                },
+                data: formData,
+                dataType: 'json',
+                success: (data) => {
+                    //console.log(data.message);
+                    loadBlogById(formData.blogId);
+                },
+                error: function(xhr, status, error) {
+                    window.alert(error);
+                }
+            });
+
+            return false;
+        }
+    </script>
+</body>
+
+
+<!-- Mirrored from web1-demo.herokuapp.com/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Apr 2022 03:56:01 GMT -->
+</html>
